@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+
+group 'com.wangzz'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+dependencies {
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation "org.springframework.boot:spring-boot-starter-test:2.2.0.RELEASE"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation ("org.springframework.boot:spring-boot-starter-web:2.2.0.RELEASE")
+
+    annotationProcessor "org.projectlombok:lombok:1.18.2"
+    compileOnly("org.projectlombok:lombok:1.18.2")
+
+    implementation ('com.baomidou:mybatis-plus-boot-starter:3.3.0') {
+        exclude group: 'com.baomidou', module: 'mybatis-plus-core'
+    }
+    implementation ('com.baomidou:mybatis-plus-core:3.4.1')
+
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.48'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.2.11'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    dependencies {
+        implementation ('com.baomidou:mybatis-plus-boot-starter:3.3.0') {
+            exclude group: 'com.baomidou', module: 'mybatis-plus-core'
+        }
+        implementation ('com.baomidou:mybatis-plus-core:3.4.1')
+        implementation 'com.baomidou:mybatis-plus-generator:3.4.1'
+    }
+}

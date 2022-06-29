@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangzz.mapper.ZzTestMapper">
+
+    <resultMap id="BaseResultMap" type="com.wangzz.entity.ZzTest">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="test" column="test" jdbcType="TIMESTAMP"/>
+            <result property="testVarchar" column="test_varchar" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,test,test_varchar
+    </sql>
+</mapper>
