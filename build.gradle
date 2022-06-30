@@ -32,6 +32,9 @@ dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.48'
     implementation 'com.alibaba:druid-spring-boot-starter:1.2.11'
 
+    //lib依赖
+    compile fileTree(dir: 'libs', includes: ['*.jar'])
+    compile project(":sub-test")
 }
 
 test {
